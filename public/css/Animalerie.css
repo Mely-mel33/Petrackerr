@@ -1,0 +1,264 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;600;700;900&display=swap');
+
+:root {
+    --primary-color: #be939d;
+    --secondary-color: #e7e2d8;
+    --gray-color: #808080;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: 'Source Sans Pro', sans-serif;
+    line-height: 1;
+    padding: 0;
+    margin: 0;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px 10vw;
+    background-color: #e7e5e5;
+}
+
+
+.logo {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.logo i {
+    opacity: 0.7;
+    color: #fff;
+    font-size: 22px;
+    padding: 6px;
+    border-radius: 4px;
+    background-color: #c5c2bb;
+}
+
+.logo span {
+    color: #6ba4f5;
+    font-size: 22px;
+    font-family: 'Roboto';
+}
+
+
+.searchbar {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.search {
+    border-radius: 8px 0px 0px 8px;
+    border: #979694 2px solid;
+    padding: 10px 24px;
+}
+
+.searchbar input {
+    border: none;
+    width: 300px;
+    outline: transparent;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    color: #000000;
+}
+
+.searchbar input::placeholder {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    color: #000000;
+}
+
+.searchbar a {
+    width: 80px;
+    display: flex;
+    height: 43px;
+    align-items: center;
+    margin-left: -30px;
+    justify-content: center;
+    background-color:#979694;
+    border-radius: 0px 8px 8px 0px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center;
+    text-decoration: none;
+    color: #FFFFFF;
+    transition: 0.5s;
+}
+
+.searchbar a:hover{
+    background-color: #cda54f;
+}
+
+
+
+
+
+
+.icons {
+    display: flex;
+    gap: 26px;
+    align-items: center;
+}
+
+.icon {
+    display: flex;
+    gap: 4px;
+    flex-direction: column;
+    align-items: center;
+    color: #8B96A5;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+
+
+.icon i {
+    font-size: 22px;
+}
+
+.icon span {
+    transition: 0.5s;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #8B96A5;
+}
+
+.icon:hover span,
+.icon:hover 
+{
+    color: #127FFF;
+}
+
+
+body {
+    background-color: #ded49cc4;
+}
+
+.heading {
+    background-color: var(--primary-color);
+    padding: 75px 0;
+    margin-bottom: 20px;
+}
+
+.heading h1 {
+    margin: auto;
+    width: fit-content;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .heading h1 {
+        font-size: 21px;
+    }
+}
+
+.container {
+    width: 1180px;
+    padding: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fill, minmax(250px, auto));
+    gap: 35px;
+}
+
+@media (max-width: 1200px) {
+    .container {
+        width: 1000px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .container {
+        width: 750px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 100%;
+    }
+}
+
+.box {
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: 5px 5px 10px 1px rgb(0, 0, 0, 12%);
+    gap: 17.5px;
+}
+
+.box img {
+    width: 100%;
+}
+
+.box img:hover {
+    cursor: pointer;
+    opacity: 0.95;
+}
+
+.box h2 {
+    font-size: 20px;
+}
+
+.box p {
+    padding: 0 20px;
+    font-size: 12.5px;
+    line-height: 1.35;
+    color: var(--gray-color);
+}
+
+.box span {
+    font-weight: 800;
+    font-size: 18px;
+}
+
+.box .rate {
+    color: #ffb900;
+    font-size: 12px;
+}
+
+.box .options {
+    margin-bottom: 25px;
+}
+
+.box .options a {
+    color: white;
+    background-color: var(--primary-color);
+    display: inline-block;
+    padding: 10px 15px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 12px;
+    border-radius: 50px;
+}
+
+.box .options a:hover {
+    background-color: var(--secondary-color);
+}

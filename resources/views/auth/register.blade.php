@@ -1,3 +1,12 @@
+<style>
+    .background-image{
+        background-image:url('images/pets.jpg');
+        background-size: cover;
+        background-position: center;
+    }
+</style>
+
+<body class="background-image">
 <x-guest-layout>
     <x-authentication-card>
         <x-slot name="logo">
@@ -28,7 +37,15 @@
                 <x-label for="password_confirmation" value="{{ __('Confirmer Mot De Passe') }}" />
                 <x-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
             </div>
-
+            <div class="mt-4">
+                <x-label for="usertype" value="{{ __('User Type') }}" />
+                <select id="usertype" name="usertype" class="block mt-1 w-full rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" required>
+                    <option value="admin">{{ __('Admin') }}</option>
+                    <option value="user">{{ __('User') }}</option>
+                    <option value="veterinaire">{{ __('Vétérinaire') }}</option>
+                </select>
+            </div>
+            
             @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
                 <div class="mt-4">
                     <x-label for="terms">
@@ -58,3 +75,4 @@
         </form>
     </x-authentication-card>
 </x-guest-layout>
+</body>

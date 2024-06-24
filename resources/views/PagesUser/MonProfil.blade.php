@@ -21,22 +21,23 @@
             <div class="content">
                 <div class="petcontainer">
                     <h1>Profil de {{ Auth::user()->name }}</h1>
-                    @if (Auth::user()->profile_photo_path)
-                        <img src="{{ asset('storage/' . Auth::user()->profile_photo_path) }}" alt="Photo de profil">
-                    @else
-                        <!-- Placeholder si l'utilisateur n'a pas encore téléchargé d'image de profil -->
-                        <div class="placeholder-image">Aucune image</div>
-                    @endif
-                    <div class="profil-info">
-                        <p><span>Nom :</span> {{ Auth::user()->name }}</p>
-                        <p><span>Email :</span> {{ Auth::user()->email }}</p>
-                        <!-- Ajoutez ici d'autres informations de profil selon vos besoins -->
+                    <div class="pet-profile">
+                        @if (Auth::user()->profile_photo_path)
+                            <img src="{{ asset('storage/' . Auth::user()->profile_photo_path) }}" alt="Photo de profil">
+                        @else
+                            <div class="placeholder-image">Aucune image</div>
+                        @endif
+                    </div>
+                    <div class="pet-info">
+                        <p><strong>Nom :</strong> {{ Auth::user()->name }}</p>
+                        <p><strong>Email :</strong> {{ Auth::user()->email }}</p>
                     </div>
                     <div class="pet-actions">
                         <a href="{{ route('profile.show') }}" class="modifier">Modifier mes
                             informations</a>
                     </div>
                 </div>
+                
             </div>
         </div>
     @endsection

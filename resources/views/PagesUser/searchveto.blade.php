@@ -24,11 +24,12 @@
 
 @section('content')
 <h1>le resultat de recherche pour ...</h1>
-<div class="table-container">
+<div class="container">
 
-<h2> "{{ $query }}"</h2>
+<h2 class="q"> "{{ $query }}"</h2>
     @if($vetos->isEmpty())
-        <p>Désolé, il n'existe pas de vétérinaires correspondant à cette localisation.</p>
+        <p class="psearch">Désolé, il n'existe pas de vétérinaires correspondant à cette localisation.</p>
+        <img class="search" src="../images/search.gif" alt="">
     @else
         <table>
             <thead>
@@ -73,71 +74,84 @@
 @endsection
 
 <style>
-    h1{
-        margin-top: 200px;
-        margin-left: 400px;
-    }
-.table-container {
+  .table-container {
     display: flex;
     justify-content: center;
     align-items: center;
     height: calc(100vh - 100px);
     padding: 20px;
+    margin-top: 120px;
+    margin-left: 200px;
+  }
 
-    }
-   
-
-table {
-    border-collapse: separate;
-    width: 1150px;
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    margin-left: 220px;
-    overflow: hidden;
-    margin-top: 0px;
-}
-
-th, td {
+  
+  th,
+  td {
     border: 1px solid #ccc;
     padding: 8px;
     text-align: left;
-}
+  }
 
-th {
+  th {
     background-color: #8d5e63;
-}
+  }
 
-td {
-    border-top: none;
-}
-
-th:first-child {
+  th:first-child {
     border-top-left-radius: 12px;
-}
+  }
 
-th:last-child {
+  th:last-child {
     border-top-right-radius: 12px;
-}
+  }
 
-tr:last-child td:first-child {
+  tr:last-child td:first-child {
     border-bottom-left-radius: 12px;
-}
+  }
 
-tr:last-child td:last-child {
+  tr:last-child td:last-child {
     border-bottom-right-radius: 12px;
-}
+  }
 
-.profil {
+  .profil {
     background-color: green;
     border-radius: 15px;
-    height: 120px;
-    width: 120px;
-}
+    height: 40px;
+    width: 100px;
+    color: white;
+    text-align: center;
+    line-height: 40px;
+    text-decoration: none;
+  }
 
-td img {
+  td img {
     max-width: 100px;
     max-height: 100px;
-}
+  }
+  .psearch{
+    margin-left: 150px;
+    color: #8d5e63; /* Couleur du texte */
+           
+            font-family: 'Arial', sans-serif; /* Police du texte */
+            font-size: 18px; /* Taille du texte */
+            font-weight: bold; /* Poids du texte */
+            letter-spacing: 1px; /* Espacement entre les lettres */
+  }
+  .q{
+    margin-left: 400px;
+    color: #8d5e63; /* Couleur du texte */
+           
+            font-family: 'Arial', sans-serif; /* Police du texte */
+            font-size: 36px; /* Taille du texte */
+            font-weight: bold; /* Poids du texte */
+            letter-spacing: 1px; /* Espacement entre les lettres */
+  }
+  .search{
 
+    position:center;
+    width: 400px;
+    height: 400px;
+     margin-left: 400px;
+  }
+</style>
 </style>
 </html>

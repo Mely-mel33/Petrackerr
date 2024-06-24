@@ -1,46 +1,30 @@
 <?php
-
+// app/Models/Post.php
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Post extends Model
 {
-    use HasFactory;
-    protected $fillable = [
-        "uuid",
-        "user_id",
-        "content",
-        "status",
-        'is_public',
-        "likes",
-        "comments",
-        
-    ];
+    protected $fillable = ['content', 'image', 'video'];
 
-    /**
-     * Get all of the comments for the Post
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function commentss(): HasMany
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
+    }
+
+    public function comments()
     {
         return $this->hasMany(Comment::class);
     }
-    /**
-     * Get the user that owns the Story
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function user(): BelongsTo
+    public function getLikesCountAttribute()
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->likes()->count();
     }
-
-   
-
-    
 }

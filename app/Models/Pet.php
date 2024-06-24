@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Model;
 
 class Pet extends Model
@@ -11,7 +13,7 @@ class Pet extends Model
 
     protected $table = 'petprofile';
     protected $fillable = [
-        'Nom', 'Espèce', 'Race', 'Age', 'Sexe', 'Description', 'Image'
+        'Nom', 'Espèce', 'Race', 'Age', 'Sexe', 'Description', 'Image','is_adoptable'
     ];
 
     
@@ -22,5 +24,13 @@ class Pet extends Model
     public function appointments()
     {
         return $this->hasMany(RendezV::class);
+    }
+    public function owner()
+    {
+        return $this->belongsTo(User::class, 'owner_id');
+    }
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

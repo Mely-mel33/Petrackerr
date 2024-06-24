@@ -19,10 +19,13 @@
         <div id="content-container" class="container ">
             <div class="content">
                 <div class="Agenda">
-                    <div id="event-form" class="p-4 shadow rounded">
-                        <h2>Ajouter une note
-                            <img src="../images/icons/planning.gif" alt="Planning" style="width: 85px;">
-                        </h2>
+                    <h2>Ajouter une note</h2>
+                    <div class="image-container text-center">
+                        <img src="../images/icons/planning.gif" alt="Planning" style="width: 180px;">
+                        </div>
+                    <div id="event-form" >
+                        
+
                         @csrf
                         <div class="form-group">
                             <label for="pet-select">Choisir l'animal</label>

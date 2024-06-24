@@ -11,6 +11,34 @@
     <link href="../css/User.css" rel="stylesheet">
 
     <title>Pet Profil</title>
+    <style>
+       
+    
+        .note:nth-child(1) {
+            background-color: #f7d2ef;
+        }
+    
+        .note:nth-child(2) {
+            background-color: #d5caf0;
+        }
+    
+        .note:nth-child(3) {
+            background-color: #e1f3c4;
+        }
+    
+        .note:nth-child(4) {
+            background-color: #f7dcdb;
+        }
+    
+        .note:nth-child(5) {
+            background-color: #c7d3e9;
+        }
+    
+        .note:nth-child(6) {
+            background-color: #978787;
+        }
+    
+    </style>
 </head>
 
 <body>
@@ -35,7 +63,8 @@
                     <div class="pet-actions">
                         <a href="{{ route('pet.edit', ['pet' => $pet->id]) }}" class="modifier">Modifier</a>
                         <a href="{{ route('pet.destroy', ['pet' => $pet->id]) }}"
-                            onclick="event.preventDefault(); document.getElementById('delete-form').submit();" class="supprimer">Supprimer</a>
+                            onclick="event.preventDefault(); document.getElementById('delete-form').submit();"
+                            class="supprimer">Supprimer</a>
                         <form id="delete-form" action="{{ route('pet.destroy', ['pet' => $pet->id]) }}" method="POST"
                             style="display: none;">
                             @csrf
@@ -45,20 +74,23 @@
                 </div>
 
                 <div class="containerNote">
-                    
                     <h2>Notes de {{ $pet->Nom }}</h2>
-                    <a href="{{ route('pet.planning', ['pet' => $pet->id] )}}"  style="align-items: center; "><img src="../images/icons/addn.png"></a>
+                    <a href="{{ route('pet.planning', ['pet' => $pet->id]) }}" style="align-items: center;">
+                        <img src="../images/icons/addn.png" alt="Ajouter une note">
+                    </a>
                     <ul id="notes-list">
-                        @foreach ($notes as $note)
-                            <li class="note">
+                        @foreach ($notes as $index => $note)
+                            <li class="note note-{{ $index % 6 }}">
                                 <div class="note-header">
                                     <strong>{{ $note->title }}</strong>
                                     <div class="note-actions">
                                         <a href="{{ route('pet.editnote', ['pet' => $pet->id, 'note' => $note->id]) }}">
-                                            <img src="../images/icons/edit.png"></a>
+                                            <img src="../images/icons/edit.png" alt="Editer">
+                                        </a>
                                         <a href="{{ route('pet.destroynote', ['pet' => $pet->id, 'note' => $note->id]) }}"
                                             onclick="event.preventDefault(); document.getElementById('delete-note-form-{{ $note->id }}').submit();">
-                                            <img src="../images/icons/supprimer.png"> </a>
+                                            <img src="../images/icons/supprimer.png" alt="Supprimer">
+                                        </a>
                                         <form id="delete-note-form-{{ $note->id }}"
                                             action="{{ route('pet.destroynote', ['pet' => $pet->id, 'note' => $note->id]) }}"
                                             method="POST" style="display: none;">

@@ -1,3 +1,12 @@
+<style>
+    .background-image{
+        background-image:url('images/pets.jpg');
+        background-size: cover;
+        background-position: center;
+    }
+</style>
+
+<body class="background-image">
 <x-guest-layout>
     <x-authentication-card>
         <x-slot name="logo">
@@ -46,3 +55,4 @@
         </form>
     </x-authentication-card>
 </x-guest-layout>
+</body>

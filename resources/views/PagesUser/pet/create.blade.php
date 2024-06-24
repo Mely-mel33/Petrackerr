@@ -10,7 +10,7 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 
 
-    <link href="../css/User.css" rel="stylesheet">
+    <link href="{{ asset('css/User.css') }}" rel="stylesheet">
     <title>Ajouter un Pet Profil</title>
 </head>
 
@@ -24,7 +24,7 @@
                     <div id="petProfileForm">
                         <h2>Ajouter un Nouvel Animal Domestique </h2>
                         <div class="image-container text-center">
-                        <img src="../images/icons/dog.gif" style="width: 220px;">
+                        <img src="../images/icons/cat.gif" >
                         </div>
                         <form enctype="multipart/form-data" id="addPetForm" method="POST"
                             action="{{ route('pet.store') }}">

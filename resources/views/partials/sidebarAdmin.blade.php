@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/User.css') }}" rel="stylesheet">
     <script src="{{ asset('js/admin.js') }}"></script>
     <script src="{{ asset('js/adminvt.js') }}"></script>
     
@@ -91,5 +91,45 @@
     </nav>
 </div>
 
+</body>
+</html>--> 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amita:wght@400;700&family=Single+Day&display=swap"
+        rel="stylesheet">
+    
+    <title>Document</title>
+</head>
+<body>
+<div class="sidebar" id="sidebar">
+      <div class="menu-list">
+        <ul class="ul1">
+        
+        <li><a href="{{ route('home') }}"><img src="../images/icons/house.png">homme</li>
+          <li><a href="{{ route('adminpubli') }}"><img src="../images/icons/post.png"> Gestion Publications</a></li>
+          <li><a href="{{ route('Adminveto') }}"><img src="../images/icons/paww.png">Gestion véterinaires</a></li>
+          <li><a href={{route('alertes_admin') }}><img src="../images/icons/alarme.png"> Gestion des alrertes </a></li>
+          <li><a href=""> <img src="../images/guide.png">  guide</a></li>
+      </ul>
+        
+        
+      
+          <hr class="separator">
+
+          <form action="{{ route('logout') }}" method="POST">
+            @csrf 
+            <button type="submit" class="logout" id="log">
+            <img src="../images/icons/logout.png">  Se déconnecter
+            </button>
+          </form>
+        
+      </div>
+    </div>
 </body>
 </html>

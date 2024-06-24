@@ -14,6 +14,9 @@ class Vetos extends Model
         'heure_travail', 'frais_consultation', 'localisation', 'description', 'image',' approved'
     ];
 
-
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
 }

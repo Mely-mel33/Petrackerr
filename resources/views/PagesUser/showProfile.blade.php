@@ -25,24 +25,32 @@
 <body>
 <div class="profile-container">
 <div class="profile-header">
+<div class="profile-img">
+            <img src="{{ asset('uploads/Vetos/'.$veto->image) }}" alt="Profile Picture">
+        </div>
         <div class="profile-info">
             <h1>{{ $veto->nom }} {{ $veto->prenom }}</h1>
-        </div>
-        <div class="profile-img">
-            <img src="{{ asset('uploads/Vetos/'.$veto->image) }}" alt="Profile Picture">
         </div>
     </div>
     <div class="profile-body">
         <div class="profile-details">
             <h1>mes infos</h1>
-            <ul>
-              
-                <li><strong>numero de telephone:</strong> {{ $veto->numtel }} </li>
-                <li><strong>nom de la clinique:</strong>{{$veto->nom_cabinet}}  </li>
-                <li><strong>l'heure de travail:</strong> {{ $veto->heure_travail}}</li>
-                <li><strong>Localisation:</strong> {{$veto->localisation }}</li></li>
-            </ul>
-             <a href="messages" class="message">message</a> 
+            <div class="row">
+                    <div class="col-md-6">
+                        <ul>
+                            <li><strong>Nom:</strong> {{ $veto->nom }} {{ $veto->prenom }}</li>
+                            <li><strong>Heure de travail:</strong> {{ $veto->heure_travail}}</li>
+                            <li><strong>Localisation:</strong> {{$veto->localisation }}</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <ul>
+                            <li><strong>numero de telephone:</strong> {{ $veto->numtel }} </li>
+                            <li><strong>l'email:</strong> {{ $veto->user->email }} </li>
+                        </ul>
+                    </div>
+                </div>
+             <a href="{{ route('messagerie') }}" class="message">      <img src="../images/icons/chat.png" alt=""> message</a> 
         </div>
         <div class="profile-footer">
             <h2> la description</h2>
@@ -56,108 +64,106 @@
   
 </body>
 <style>
-.profile-container {
-    max-width: 800px;
-    height: 550px;
-    margin: auto;
-    margin-top: 160px;
-    background: #d1d0;
-    padding: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    background-color:  #dddd;
-    color: black;
-    text-align: center;
-  
-}
+        body {
+        background-color: #f1f1f1;
+        display: flex;
+      
+        min-height: 100vh;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-.profile-header {
-    display: flex;
-    flex-direction: column; /* Pour empiler les éléments verticalement */
-    align-items: center; /* Pour centrer les éléments horizontalement */
-    border-bottom: 1px solid #eaeaea;
-    padding-bottom: 20px;
-    padding-top: 20px; /* Ajout de padding en haut pour séparer du contenu précédent */
-    border-radius: 30px;
-    background-color: #8d5e63;
-}
+    .profile-container {
+        width: 100%;
+        max-width: 900px; /* Largeur du profil plus grande */
+        max-height: 800px;
+        margin: auto;
+        background: #dddd;
+        padding: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        color: black;
+        text-align: center;
+        margin-top: 150px;
+        margin-left: 400px;
+    }
 
+    .profile-header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px 0;
+        background-color: #8d5e63;
+        border-radius: 10px 10px 10px 10px;
+    }
 
-.profile-info {
-    margin-bottom: 10px; /* Espace entre le nom/prénom et l'image */
-}
-.profile-img img {
-    max-width: 200px;
-    max-height: 200px;
-    border-radius: 50%;
-}
-.profile-info p {
-    margin: 5px 0 0;
-    font-size: 16px;
-    color: #000;
-}
-.message{
-background-color: green;
-border-radius: 10px;
-height: 220px;
-width: 200px;
+    .profile-img img {
+        max-width: 100px;
+        max-height: 100px;
+        border-radius: 50%;
+    }
 
-   
+    .profile-info {
+        margin-top: 10px;
+       
+    }
 
+    .profile-info h1 {
+        font-size: 2.3em;
+        margin: 0;
+    }
 
-}
+    
 
-.profile-body {
-    width: 100%;
-}
+    .profile-body {
+        padding: 10px;
+    }
 
-.profile-details {
-    width: 100%;
-}
+    .profile-details {
+        width: 100%;
+        margin: auto;
+    }
 
-.profile-details h2 {
-    margin-top: 0;
-    font-size: 20px;
-    color: #333;
-}
+    .profile-details h1 {
+        font-size: 1.2em;
+        margin: 10px 0;
+    }
 
-.profile-details ul {
-    list-style: none;
-    padding: 0;
-}
+    .profile-details ul {
+        list-style: none;
+        padding: 0;
+        margin: 10px 0;
+    }
 
-.profile-details ul li {
-    margin-bottom: 10px;
-    font-size: 16px;
-    color: #555;
-    position: center;
-}
+    .profile-details ul li {
+        margin-bottom: 5px;
+        font-size: 1.1em; /* Taille de la police plus grande */
+        color: #555;
+    }
 
-.profile-details ul li strong {
-    font-weight: 600;
-}
-.profile-footer {
-    width: 100%;
-    border-top: 1px solid #eaeaea;
-    padding-top: 20px;
-    margin-top: 20px;
-    text-align: center;
-    background-color:black ;
-    border-radius: 20px;
-    height: 100px;
-}
+    .profile-details ul li strong {
+        font-weight: 600;
+    }
 
-.profile-footer h2 {
-    font-size: 20px;
-    color: white;
-}
+    .profile-footer {
+        padding: 10px;
+        background-color: black;
+        border-radius: 10px 10px 10px 10px;
+        margin-top: 20px; /* Ajout de marge supérieure */
+    }
 
-.profile-footer p {
-    font-size: 16px;
-    color: white;
-    line-height: 1.5;
-}
+    .profile-footer h2 {
+        font-size: 1.2em;
+        color: white;
+        margin: 0;
+    }
 
+    .profile-footer p {
+        font-size: 1.1em; /* Taille de la police plus grande */
+        color: white;
+        line-height: 1.5;
+    }
 </style>
  
 

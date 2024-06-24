@@ -66,7 +66,7 @@ return [
         ],
         
             App\Providers\MiddlewareServiceProvider::class,
-        
+            Usamamuneerchaudhary\Commentify\Providers\CommentifyServiceProvider::class,
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',

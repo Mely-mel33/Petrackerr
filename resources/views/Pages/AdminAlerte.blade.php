@@ -8,7 +8,7 @@
         integrity="sha512-...">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.4.0/remixicon.css" crossorigin="">
 
-    <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/User.css') }}" rel="stylesheet">
     <script src="{{ asset('js/admin.js') }}"></script>
     <script src="{{ asset('js/adminvt.js') }}"></script>
 

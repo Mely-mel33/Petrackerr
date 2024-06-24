@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.4.0/remixicon.css" crossorigin="">
 
 
-    <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/User.css') }}" rel="stylesheet">
     <link href="../css/User.css" rel="stylesheet">
     <title>Gestion veterinaire</title>
 </head>
@@ -20,8 +20,8 @@
     @extends('layout.appadmin')
 
     @section('contenu')
-        <div id="content-container" class="container">
-            <div class="content">
+    <div class="container">
+    <div class="content">
                 <div class="vet-table">
                     <h2>Demandes d'inscription des vétérinaires</h2>
 
@@ -31,9 +31,11 @@
                         </div>
                     @endif
 
-                    <table class="vetable" id="vetbl">
-                        <thead>
-                            <tr>
+                  
+
+                <table class="table">
+                         <thead>
+                         <tr>
                                 <th>ID</th>
                                 <th>Nom</th>
                                 <th>prenom</th>
@@ -104,5 +106,70 @@
 
     <script src="{{ asset('js/admin.js') }}"></script>
 </body>
+<style>
+    body {
+    font-family: 'Pacifico', cursive;
+}
+    h2{
+
+        margin-top: 30px;
+        margin-left: 300px;
+        font-family: 'Pacifico', cursive;
+    }
+  .table-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 100px);
+    padding: 20px;
+    margin-top: 120px;
+    margin-left: 200px;
+  }
+
+  
+  th,
+  td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+  }
+
+  th {
+    background-color: #8d5e63;
+  }
+
+  th:first-child {
+    border-top-left-radius: 12px;
+  }
+
+  th:last-child {
+    border-top-right-radius: 12px;
+  }
+
+  tr:last-child td:first-child {
+    border-bottom-left-radius: 12px;
+  }
+
+  tr:last-child td:last-child {
+    border-bottom-right-radius: 12px;
+  }
+
+  .profil {
+    background-color: green;
+    border-radius: 15px;
+    height: 40px;
+    width: 100px;
+    color: white;
+    text-align: center;
+    line-height: 40px;
+    text-decoration: none;
+  }
+
+  td img {
+    max-width: 100px;
+    max-height: 100px;
+  }
+</style>
 
 </html>
+

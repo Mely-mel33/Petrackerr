@@ -34,19 +34,17 @@ class DashboardController extends Controller
         ]);
     }
 
-    public function getAnimauxAjoutesParMois()
+   public function getAnimauxAjoutesParType()
 {
-    $animaux = Pet::select(DB::raw('YEAR(created_at) as year, MONTH(created_at) as month, COUNT(*) as total'))
-        ->groupBy('year', 'month')
-        ->orderBy('year')
-        ->orderBy('month')
+    $animaux = Pet::select('Espèce as type', DB::raw('COUNT(*) as total'))
+        ->groupBy('Espèce')
         ->get();
 
     $labels = [];
     $totals = [];
 
     foreach ($animaux as $animal) {
-        $labels[] = $animal->year . '-' . str_pad($animal->month, 2, '0', STR_PAD_LEFT);
+        $labels[] = $animal->type;
         $totals[] = $animal->total;
     }
 
@@ -55,4 +53,5 @@ class DashboardController extends Controller
         'totals' => $totals,
     ]);
 }
+
 }

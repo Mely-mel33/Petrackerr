@@ -108,8 +108,8 @@ class VetooController extends Controller
     {
         $veto = Vetos::findOrFail($id);
         $rules = [
-            'nom' => 'required|string|min:2',
-            'prenom' => 'required|string|min:2',
+           // 'nom' => 'required|string|min:2',
+           // 'prenom' => 'required|string|min:2',
             'numtel' => 'required|string|max:13',
             'nom_cabinet' => 'required|string|min:3',
             'heure_travail' => 'required|string',
@@ -134,8 +134,8 @@ class VetooController extends Controller
             return redirect()->route('veto.edit', $veto->id)->withInput()->withErrors($validator);
         }
         $veto->user_id = auth()->id(); // ou une autre valeur représentant l'ID de l'utilisateur
-        $veto->nom = $request->nom;
-        $veto->prenom = $request->prenom;
+      //  $veto->nom = $request->nom;
+       // $veto->prenom = $request->prenom;
         $veto->numtel = $request->numtel;
         $veto->nom_cabinet = $request->nom_cabinet;
         $veto->heure_travail = $request->heure_travail;
@@ -194,12 +194,18 @@ class VetooController extends Controller
 
     // Méthode pour afficher un profil veterinaire pour un utilisateur 
 
-    public function showProfile($id)
+ /*   public function showProfile($id)
     {
         $veto = Vetos::findOrFail($id);
         return view('PagesUser.showProfile', ['veto' => $veto]);
-    }
+    }*/
+    public function showProfile($id)
+    {
 
+        $veto = Vetos::with('user')->find($id);
+return view('PagesUser.showProfile', compact('veto'));
+
+    }
 
 
 
@@ -260,7 +266,7 @@ class VetooController extends Controller
         $query = $request->input('localisation');
         $vetos = Vetos::where('localisation', 'LIKE', '%' . $query . '%')->where('approved', true)->get();
 
-        return view('PagesUser.searchveto', compact('vetos', 'query'));
+        return view('PagesUser.listesveto', compact('vetos', 'query'));
     }
 
     public function showPendingAppointments()
@@ -302,6 +308,9 @@ class VetooController extends Controller
             return redirect()->back()->with('success', 'Rendez-vous rejeté avec succès.');
         }
         return redirect()->back()->with('error', 'Rendez-vous non trouvé.');
+    }
+    public function messagerieV() {
+        return view('PagesUser.MessagerieV');
     }
 
 }

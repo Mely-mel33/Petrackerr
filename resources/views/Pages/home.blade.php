@@ -50,9 +50,7 @@
                         <li class="nav-item">
                             <a class="nav-link click-scroll" href="#section_2">Nos services</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link click-scroll" href="Animalerie.html">Animalerie</a>
-                        </li>
+                        
                         <li class="nav-item">
                             <a class="nav-link click-scroll" href="#section_6">Donation</a>
                         </li>

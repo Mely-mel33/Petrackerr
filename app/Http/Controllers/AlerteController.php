@@ -57,9 +57,13 @@ class AlerteController extends Controller
 
     public function listalert(Alerte $alerte)
     {
-        $alertes = Alerte::where('created_at', '>=', now()->subHours(48))
+        $user = auth()->user(); // Obtenir l'utilisateur authentifié
+    
+        $alertes = Alerte::where('user_id', $user->id) // Filtrer par l'utilisateur authentifié
+            ->where('created_at', '>=', now()->subHours(48))
             ->orderBy('created_at', 'desc')
             ->get();
+        
         return view('PagesUser.AlerteList', compact('alertes'));
     }
 

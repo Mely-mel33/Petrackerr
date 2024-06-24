@@ -18,7 +18,9 @@ return new class extends Migration
             $table->unsignedBigInteger('veterinaire_id');
             $table->date('date');
             $table->time('heure');
-            $table->boolean('status')->default(false);
+           // $table->boolean('status')->default(false);
+           $table->enum('status', ['en_attente', 'acceptée', 'refusée'])->default('en_attente');
+           $table->text('remarque')->nullable(); 
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('pet_id')->references('id')->on('petprofile');
             $table->foreign('veterinaire_id')->references('id')->on('veto');

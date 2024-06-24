@@ -27,6 +27,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'usertype',
     ];
 
     /**
@@ -49,7 +50,7 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
-/**
+    /**
      * Get the profile photo path for the user.
      *
      * @return string
@@ -74,5 +75,25 @@ class User extends Authenticatable
     public function alertes()
     {
         return $this->hasMany(Alerte::class);
+    }
+    public function veto()
+    {
+        return $this->hasOne(Vetos::class);
+    }
+    public function Pet()
+    {
+        return $this->hasMany(Pet::class);
+    }
+    public function rendezVous()
+    {
+        return $this->hasMany(RendezV::class, 'user_id');
+    }
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
+    public function Adoption()
+    {
+        return $this->hasMany(adoption::class);
     }
 }

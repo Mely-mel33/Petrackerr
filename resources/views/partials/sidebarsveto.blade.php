@@ -15,12 +15,10 @@
           <li><a href="{{ route('accueil') }}"><i class="fas fa-home"></i> Accueil</a></li>
           <li><a href="{{ route('listesveto') }}"><i class="fas fa-home"></i> la liste des veto</a></li>
          
-          <li><a href="{{ route('publi') }}"><i class="fas fa-newspaper"></i> Publication</a></li>
+         
         
           <li>
-            <a href="{{ route('pet.PetProfil') }}">
-                <i class="fas fa-paw"></i> Pet Profil <span class="caret"></span>
-            </a>
+            
             <!-- Dropdown menu pour Pet Profil -->
             <ul class="submenu">
                 <li><a href="{{route('pet.create')}}">Ajouter Animal</a></li>
@@ -29,12 +27,12 @@
         </li>
           <li><a href="{{ route('messagerie') }}"><i class="fas fa-envelope"></i> Messages</a></li>
       
-          <li><a href="{{ route('planning') }}"><i class="fas fa-calendar-alt"></i> Mon Planning</a></li>
-          <li><a href=""><i class="fas fa-bullhorn"></i> Annonces</a></li>
+          <li><a href="#"><i class="fas fa-calendar-alt"></i> Mon Planning</a></li>
+          <li><a href="#"><i class="fas fa-bullhorn"></i> Annonces</a></li>
       </ul>
         
         <ul class="ul2">
-          <li><a href="{{ route('param') }}"><i class="fas fa-cog"></i> Paramètres </a></li>
+          <li><a href="#"><i class="fas fa-cog"></i> Paramètres </a></li>
           <li><a href=""> <i class="fas fa-question-circle"></i> Aide et Support</a></li>
           <hr class="separator">
 

@@ -1,63 +1,80 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Livewire\Components;
 
-use Illuminate\Http\Request;
-use App\Models\Publication;
+use App\Models\Post;
+use App\Models\PostMedia;
+use Illuminate\Support\Facades\DB;
+use Livewire\Component;
+use Livewire\WithFileUploads;
+use Str;
 
-class PubliController extends Controller
+class CreatePost extends Component
 {
-    public function Publi()
+    use WithFileUploads;
+    public $content;
+    public $images;
+    public $video;
+
+    public function render()
     {
-
-        // Récupérez toutes les publications publiées
-        $publications = Publication::where('status', 'published')->get();
-
-        return view('livewire.publi', compact('publications'));
-
-
+        return view('livewire.components.create-post');
     }
 
-    public function create()
+    public function createpost()
     {
-        return view('PagesUser.publis.create');
-    }
-
-    public function store(Request $request)
-    {
-        $request->validate([
-            'content' => 'required',
+        $this->validate([
+            "content" => "required|string",
+            /*"images.*" => "image|mimes:jpeg,png,jpg,gif|max:10240", 
+            "video" => "mimes:mp4,avi,mov,wmv|max:20480",*/
         ]);
 
-        //Créez une nouvelle publication avec le contenu et l'utilisateur actuel
-        $publication = new Publication();
-        $publication->content = $request->content;
-        $publication->user_id = auth()->id(); // Récupère l'ID de l'utilisateur actuel
-        $publication->save();
-        // Émettez un événement pour informer les auditeurs (clients) qu'une nouvelle publication a été créée
-        broadcast(new NewPublication($publication));
+        DB::beginTransaction();
+        try {
+            // Création de la publication
+            $post = Post::create([
+                "uuid" => Str::uuid(),
+                "user_id" => auth()->id(),
+                "content" => $this->content,
+            ]);
 
-        return redirect()->route('publi')->with('success', 'Publication créée avec succès');
-    }
+            $images = [];
+            // if post his media
+            if ($this->images) {
+                foreach ($this->images as $image) {
+                    $images[] = $image->store("posts/images", "public");
+                }
+                PostMedia::create([
+                    "post_id" => $post->id,
+                    "file_type" => "image",
+                    "file" => json_encode($images),
+                    "position" => "general",
+                ]);
+            }
 
 
+            $video_file_name = "";
+            if ($this->video) {
+                $video_file_name = $this->video->store("posts/video", "public");
+                PostMedia::create([
+                    "post_id" => $post->id,
+                    "file_type" => "video",
+                    "file" => $video_file_name,
+                    "position" => "general",
+                ]);
+            }
 
 
+            DB::commit();
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            throw $th;
+        }
 
-
-
-
-    
-    public function edit()
-    {
-        return view('PagesUser.publis.publi');
-    }
-    public function update()
-    {
-        return view('PagesUser.publis.publi');
-    }
-    public function destroy()
-    {
-        return view('PagesUser.publis.publi');
+        // Réinitialisation du champ content et des images
+        unset($this->content);
+        unset($this->images);
+        unset($this->video);
+        session()->flash('message', 'Votre publication a bien été publiée.');
     }
 }

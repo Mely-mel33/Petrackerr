@@ -14,7 +14,7 @@
   
     <div class="container">
        
-      <h1 class="form-title">modification inscription </h1>
+      <h1 class="form-title">modifier les informations professionnels</h1>
       <form enctype="multipart/form-data" id="addPetForm" method="POST"
                             action="{{ route('veto.update', $veto->id) }}">
 
